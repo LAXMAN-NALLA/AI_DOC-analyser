@@ -1,16 +1,10 @@
 services:
   - type: web
     name: doc-analyzer
-    env: python
-    region: oregon
+    env: docker
     plan: free
-
-    buildCommand: |
-      ./render-build.sh
-      pip install -r requirements.txt
-
-    startCommand: ./start.sh
-
+    dockerfilePath: ./Dockerfile
     envVars:
       - key: OPENAI_API_KEY
-        value: your-real-openai-key
+        value: your-openai-key-here
+
