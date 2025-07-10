@@ -1,0 +1,25 @@
+# Core Web & API
+fastapi
+uvicorn
+python-multipart
+
+# AI & Language Model
+openai
+python-dotenv
+
+# OCR & PDF/Image Parsing
+pytesseract
+pdfplumber
+pdf2image
+Pillow
+
+# Office & Data Files
+pandas
+python-docx
+
+# Streamlit UI
+streamlit
+requests
+
+# Optional (for Windows users using pdf2image)
+# You must install Poppler manually and ensure it's in PATH
