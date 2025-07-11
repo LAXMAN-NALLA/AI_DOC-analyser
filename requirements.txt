@@ -21,5 +21,8 @@ python-docx
 streamlit
 requests
 
+
+gunicorn
+
 # Optional (for Windows users using pdf2image)
 # You must install Poppler manually and ensure it's in PATH
