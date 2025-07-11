@@ -1,10 +1,12 @@
 #!/bin/bash
 
-# This starts your FastAPI app using Gunicorn + UvicornWorker
-# on the correct host and port Render expects
+# Use Render-provided PORT or default to 10000 for local testing
+PORT=${PORT:-10000}
+
+echo "📦 Starting Gunicorn server on port $PORT..."
 
 gunicorn main:app \
     --workers 3 \
     --worker-class uvicorn.workers.UvicornWorker \
-    --bind 0.0.0.0:9000 \
+    --bind 0.0.0.0:$PORT \
     --timeout 180
