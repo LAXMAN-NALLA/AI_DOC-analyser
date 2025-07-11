@@ -16,6 +16,14 @@ def extract_from_csv(file_path):
     df = pd.read_csv(file_path)
     return df.to_string(index=False)
 
+def extract_from_xlsx(file_path):
+    try:
+        df = pd.read_excel(file_path)
+        return df.to_string(index=False)
+    except Exception as e:
+        logging.error(f"Failed to extract from xlsx: {e}")
+        return ""
+
 def extract_from_image(file_path):
     return pytesseract.image_to_string(Image.open(file_path), config='--psm 6 -l eng+nld')
 
@@ -54,6 +62,8 @@ async def extract_text(file_path: str, extension: str) -> str:
             return extract_from_docx(file_path)
         elif extension == ".csv":
             return extract_from_csv(file_path)
+        elif extension == ".xlsx":
+            return extract_from_xlsx(file_path)
         elif extension in [".png", ".jpg", ".jpeg"]:
             return extract_from_image(file_path)
         else:
