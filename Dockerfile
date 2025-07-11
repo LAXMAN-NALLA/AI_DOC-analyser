@@ -6,17 +6,12 @@ RUN apt-get update && apt-get install -y \
     poppler-utils \
     && rm -rf /var/lib/apt/lists/*
 
-# Set working directory
 WORKDIR /app
 
-# Copy all files into the container
 COPY . /app
 
-# Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Expose the internal port (optional for local docker testing)
-EXPOSE 9000
+EXPOSE 10000
 
-# Start the FastAPI app using Gunicorn
-CMD ["gunicorn", "main:app", "-k", "uvicorn.workers.UvicornWorker", "--bind", "0.0.0.0:9000", "--timeout", "180"]
+CMD ["sh", "-c", "gunicorn main:app -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:${PORT:-10000} --timeout 180"]
