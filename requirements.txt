@@ -16,6 +16,8 @@ Pillow
 # Office & Data Files
 pandas
 python-docx
+openpyxl
+
 
 # Streamlit UI
 streamlit
