@@ -7,4 +7,5 @@ services:
     envVars:
       - key: OPENAI_API_KEY
         value: your-openai-key-here
-
+      - key: PORT
+        value: 10000
