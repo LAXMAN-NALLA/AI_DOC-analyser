@@ -22,7 +22,7 @@ app.add_middleware(
 @app.post("/api/analyze")
 async def analyze(file: UploadFile = File(...)):
     ext = Path(file.filename).suffix.lower()
-    if ext not in [".pdf", ".docx", ".csv", ".png", ".jpg", ".jpeg"]:
+    if ext not in [".pdf", ".docx", ".csv", ".xlsx", ".png", ".jpg", ".jpeg"]:
         raise HTTPException(status_code=400, detail="Unsupported file type")
 
     with tempfile.NamedTemporaryFile(delete=False, suffix=ext) as tmp:
